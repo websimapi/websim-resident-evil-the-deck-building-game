@@ -79,23 +79,10 @@ const App = () => {
     const completion = await websim.chat.completions.create({
       messages: [
         {
-          role: "system",
-          content: `Combine the following concepts into a single, coherent idea.
-Respond directly with JSON, following this JSON schema, and no other text.
-{
-  concept: string;
-  emoji: string;
-}
-`,
-        },
-        {
           role: "user",
-          content: [
-            { type: "text", text: "eggs + fire" },
-          ]
+          content: prompt
         }
-      ],
-      json: true
+      ]
     });
     
     return completion.content;
