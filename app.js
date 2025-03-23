@@ -80,13 +80,22 @@ const App = () => {
       messages: [
         {
           role: "system",
-          content: "You are a creative writer for a Resident Evil deck-building card game. Keep descriptions concise, thematic, and evocative of the survival horror genre."
+          content: `Combine the following concepts into a single, coherent idea.
+Respond directly with JSON, following this JSON schema, and no other text.
+{
+  concept: string;
+  emoji: string;
+}
+`,
         },
         {
           role: "user",
-          content: prompt
+          content: [
+            { type: "text", text: "eggs + fire" },
+          ]
         }
-      ]
+      ],
+      json: true
     });
     
     return completion.content;
@@ -306,4 +315,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('app')
 );
-
